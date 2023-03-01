@@ -1,5 +1,5 @@
 
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
 
 @Entity()
 export class Address {
@@ -20,5 +20,4 @@ export class Address {
 
     @Column({type: "varchar", length: 2})
     state: string
-
 }
