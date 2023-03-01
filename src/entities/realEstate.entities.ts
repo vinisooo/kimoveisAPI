@@ -24,8 +24,8 @@ export class RealEstate {
 
     @OneToOne(() => Address)
     @JoinTable()
-    addressId: number
+    addressId: Address
 
     @ManyToOne(() => Category)
-    categoryId: number
+    categoryId: Category
 }
