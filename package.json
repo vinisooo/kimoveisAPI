@@ -1,7 +1,7 @@
 {
   "scripts": {
     "test": "jest --verbose --runInBand",
-    "dev": "tsnd --cls --rs src/app.ts",
+    "dev": "tsnd --cls --rs src/server.ts",
     "typeorm": "typeorm-ts-node-commonjs"
   },
   "dependencies": {
