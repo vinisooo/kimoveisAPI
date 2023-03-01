@@ -1,5 +1,7 @@
 import path from "path";
 import { DataSource, DataSourceOptions } from "typeorm";
+import "dotenv/config";
+import "reflect-metadata";
 
 const dataSourceConfig = (): DataSourceOptions => {
     const entitiesPath: string = path.join(__dirname, "./entities/**{ts, js}");
