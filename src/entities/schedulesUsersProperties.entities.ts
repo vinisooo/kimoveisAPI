@@ -1,9 +1,12 @@
 import { User } from './users.entities';
 import { RealEstate } from './realEstate.entities';
-import { Entity, Column, ManyToOne } from "typeorm";
+import { Entity, Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 
 @Entity("schedules_users_properties")
 export class Schedule{
+    @PrimaryGeneratedColumn()
+    id: number
+
     @Column()
     date: Date
 
