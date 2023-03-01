@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, BeforeInsert, BeforeUpdate } from "typeorm";
-import * as bcrypt from 'bcryptjs';
+import { hashSync } from "bcryptjs";
 
 @Entity("users")
 export class User{
@@ -12,30 +12,30 @@ export class User{
     @Column({type: "varchar", unique: true, length: 45})
     email: string
 
-    @Column()
+    @Column({default: false})
     admin: boolean
 
     @Column({type: "varchar", length: 120})
     password: string
 
-    @CreateDateColumn()
-    createdAt: Date
+    @CreateDateColumn({type: "date"})
+    createdAt: string
 
-    @UpdateDateColumn()
-    updatedAt: Date
+    @UpdateDateColumn({type: "date"})
+    updatedAt: string
 
-    @DeleteDateColumn()
-    deletedAt: Date
+    @DeleteDateColumn({type: "date"})
+    deletedAt: string
 
     @BeforeInsert()
-    async encryptInsert()
+    encryptInsert()
     {
-        this.password = await bcrypt.hash(this.password, 10)
+        this.password = hashSync(this.password, 10)
     }
 
     @BeforeUpdate()
     async encryptUpdate()
     {
-        this.password = await bcrypt.hash(this.password, 10)
+        this.password = hashSync(this.password, 10)
     }
 }

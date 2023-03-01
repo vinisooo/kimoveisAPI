@@ -10,8 +10,8 @@ export class RealEstate {
     @Column({type: "boolean", default: true})
     sold: false
 
-    @Column({type: "decimal", precision: 12, scale: 2})
-    value: number
+    @Column({type: "decimal", precision: 12, scale: 2, default: 0})
+    value: number | string
 
     @Column({type: "integer"})
     size: number
