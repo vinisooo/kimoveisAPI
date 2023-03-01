@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, DeleteDateColumn, BeforeInsert, BeforeUpdate } from "typeorm";
+import * as bcrypt from 'bcryptjs';
 
 @Entity("users")
 export class User{
@@ -25,4 +26,16 @@ export class User{
 
     @DeleteDateColumn()
     deletedAt: Date
+
+    @BeforeInsert()
+    async encryptInsert()
+    {
+        this.password = await bcrypt.hash(this.password, 10)
+    }
+
+    @BeforeUpdate()
+    async encryptUpdate()
+    {
+        this.password = await bcrypt.hash(this.password, 10)
+    }
 }
