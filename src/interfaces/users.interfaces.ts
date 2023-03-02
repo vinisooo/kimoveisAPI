@@ -1,4 +1,4 @@
-import { loginReqSchema, noPasswordUserSchema, postUserReqSchema, userSchema, } from "../schemas/users.schemas";
+import { editUserSchema, loginReqSchema, noPasswordUserSchema, postUserReqSchema, userSchema, } from "../schemas/users.schemas";
 import { z } from "zod";
 
 type iUser = z.infer<typeof userSchema>;

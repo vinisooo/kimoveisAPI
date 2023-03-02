@@ -11,8 +11,14 @@ const userSchema = z.object({
     deletedAt: z.string().nullable()
 })
 
+const editUserSchema =z.object({
+    name: z.string().max(45).optional(),
+    email: z.string().email().max(45).optional(),
+    password: z.string().max(120).optional()
+})
+
 const postUserReqSchema = userSchema.omit({createdAt: true, updatedAt: true, deletedAt: true, id: true});
 const loginReqSchema = postUserReqSchema.omit({admin: true, name: true})
 const noPasswordUserSchema = userSchema.omit({password: true});
 
-export { userSchema, postUserReqSchema, noPasswordUserSchema, loginReqSchema }
+export { userSchema, postUserReqSchema, noPasswordUserSchema, loginReqSchema, editUserSchema }

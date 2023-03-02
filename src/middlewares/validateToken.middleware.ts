@@ -16,7 +16,7 @@ export const validateTokenMiddleware = (req: Request, res: Response, next: NextF
         }
         req.loggedUser = {
             admin: decoded.admin,
-            id: decoded.id
+            id: decoded.sub
         }
     })
     return next();

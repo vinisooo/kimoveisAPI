@@ -5,7 +5,7 @@ import { Request, Response, NextFunction } from 'express';
 import { AppError } from '../errors';
 
 
-export const checkIfEmailExists = async (req: Request, res: Response, next: NextFunction) => {
+export const checkIfEmailExistsMiddleware = async (req: Request, res: Response, next: NextFunction) => {
     const userRepo: Repository<User> = AppDataSource.getRepository(User);
     const payload: User = req.body;
 

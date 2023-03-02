@@ -1,3 +1,4 @@
+import { patchUserService } from './../services/users/patchUser.service';
 import { getAllUsersService } from './../services/users/getAllUsers.service';
 import { User } from './../entities/users.entities';
 import { postUserService } from './../services/users/postUser.service';
@@ -17,4 +18,12 @@ const getAllUsersController = async (req: Request, res: Response): Promise<Respo
     return res.status(200).json(allUsers);
 }
 
-export { postUserController, getAllUsersController }
+const patchUserController = async (req: Request, res: Response): Promise<Response> => {
+    const foundUser: User = req.foundUser;
+    const payload = req.body;
+    const editedUser = await patchUserService(foundUser, payload);
+
+    return res.status(200).json(editedUser);
+}
+
+export { postUserController, getAllUsersController, patchUserController }
