@@ -12,7 +12,7 @@ const postUserController = async (req: Request, res: Response): Promise<Response
 }
 
 const getAllUsersController = async (req: Request, res: Response): Promise<Response> => {
-    const allUsers: User[] = await getAllUsersService();
+    const allUsers: iNoPasswordUser[] = await getAllUsersService();
 
     return res.status(200).json(allUsers);
 }
