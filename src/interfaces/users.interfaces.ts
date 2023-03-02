@@ -6,4 +6,9 @@ type iPostUserReq = z.infer<typeof postUserReqSchema>;
 type iNoPasswordUser = z.infer<typeof noPasswordUserSchema>
 type iLoginReqSchema = z.infer<typeof loginReqSchema>
 
-export { iUser, iPostUserReq, iNoPasswordUser, iLoginReqSchema };
+interface iLoggedUser {
+    admin: boolean,
+    id: number
+}
+
+export { iUser, iPostUserReq, iNoPasswordUser, iLoginReqSchema, iLoggedUser };
