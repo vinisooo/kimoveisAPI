@@ -11,7 +11,8 @@ const userSchema = z.object({
     deletedAt: z.string().nullable()
 })
 
-const postUserReqSchema = userSchema.omit({createdAt: true, updatedAt: true, deletedAt: true, id: true})
+const postUserReqSchema = userSchema.omit({createdAt: true, updatedAt: true, deletedAt: true, id: true});
+const loginReqSchema = postUserReqSchema.omit({admin: true, name: true})
 const noPasswordUserSchema = userSchema.omit({password: true});
 
-export { userSchema, postUserReqSchema, noPasswordUserSchema }
+export { userSchema, postUserReqSchema, noPasswordUserSchema, loginReqSchema }

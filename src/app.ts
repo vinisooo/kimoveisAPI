@@ -1,5 +1,5 @@
-import { loginRouter } from './routers/login.routes';
 import "express-async-errors";
+import { loginRouter } from './routers/login.routes';
 import express, { Application } from "express";
 import { userRouter } from "./routers/users.routes";
 import { handleError } from "./errors";

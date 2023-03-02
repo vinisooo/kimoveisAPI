@@ -2,10 +2,10 @@ import { Request, Response, NextFunction } from "express";
 import { ZodError } from "zod";
 
 class AppError extends Error {
-    statusCode: number;
     message: string;
+    statusCode: number;
 
-    constructor(statusCode = 400, message: string){
+    constructor(message: string, statusCode = 400){
         super()
         this.message = message
         this.statusCode = statusCode
@@ -14,7 +14,7 @@ class AppError extends Error {
 
 const handleError = (err: Error, req: Request, res: Response, _:NextFunction) => {
     if(err instanceof AppError){
-        return res.status(400).json({
+        return res.status(err.statusCode).json({
             message: err.message
         })
     }
