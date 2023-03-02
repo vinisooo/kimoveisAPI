@@ -4,6 +4,7 @@ import { User } from './../entities/users.entities';
 import { postUserService } from './../services/users/postUser.service';
 import { Request, Response } from "express"
 import { iNoPasswordUser, iPostUserReq } from '../interfaces/users.interfaces';
+import { softDeleteUserService } from '../services/users/softDeleteUser.service';
 
 const postUserController = async (req: Request, res: Response): Promise<Response> => {
     const payload: iPostUserReq = req.body;
@@ -26,4 +27,12 @@ const patchUserController = async (req: Request, res: Response): Promise<Respons
     return res.status(200).json(editedUser);
 }
 
-export { postUserController, getAllUsersController, patchUserController }
+const  softDeleteUserController = async(req: Request, res: Response): Promise<Response> => {
+    const userId = parseInt(req.params.id);
+
+    await softDeleteUserService(userId);
+
+    return res.status(204).send();
+}
+
+export { postUserController, getAllUsersController, patchUserController, softDeleteUserController }
