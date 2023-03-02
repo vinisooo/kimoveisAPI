@@ -1,3 +1,4 @@
+import "express-async-errors";
 import express, { Application } from "express";
 import { userRouter } from "./routers/users.routes";
 import { handleError } from "./errors";
