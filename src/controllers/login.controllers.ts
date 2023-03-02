@@ -6,5 +6,5 @@ export const loginController = async (req: Request, res: Response): Promise<Resp
 
     const loggedUserToken: string = await loginService(payload);
 
-    return res.status(201).json({token: loggedUserToken})
+    return res.status(200).json({token: loggedUserToken})
 }
