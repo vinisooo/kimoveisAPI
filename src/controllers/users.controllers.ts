@@ -1,7 +1,7 @@
 import { postUserService } from './../services/users/postUser.service';
 import { Request, Response } from "express"
 
-export const postUser = async (req: Request, res: Response): Promise<Response> => {
+export const postUserController = async (req: Request, res: Response): Promise<Response> => {
     const payload = req.body;
     const createdUser = await postUserService(payload);
 
