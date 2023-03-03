@@ -1,6 +1,7 @@
 import "express-async-errors";
 import { loginRouter } from './routers/login.routes';
 import { userRouter } from "./routers/users.routes";
+import { realEstatesRouter } from "./routers/realEstates.routes";
 import { categoriesRouter } from "./routers/categories.routes";
 import express, { Application } from "express";
 import { handleError } from "./errors";
@@ -11,6 +12,7 @@ app.use(express.json());
 app.use("/users", userRouter);
 app.use("/login", loginRouter);
 app.use("/categories", categoriesRouter);
+app.use("/realEstate", realEstatesRouter)
 
 app.use(handleError);
 
