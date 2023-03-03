@@ -1,6 +1,7 @@
 import { Category } from './categories.entities';
 import { Address } from './addresses.entities';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinTable, ManyToOne } from "typeorm";
+import { nullable } from 'zod';
 
 @Entity("real_estate")
 export class RealEstate {
@@ -26,6 +27,6 @@ export class RealEstate {
     @JoinTable()
     addressId: Address
 
-    @ManyToOne(() => Category)
+    @ManyToOne(() => Category,{nullable: true})
     categoryId: Category
 }
