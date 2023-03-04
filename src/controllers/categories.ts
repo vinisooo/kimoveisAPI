@@ -1,3 +1,4 @@
+import { getRealEstatesByCategoryService } from './../services/categories/getRealEstatesByCategory.service';
 import { postCategoryService } from './../services/categories/postCategories.service';
 import { Request, Response } from "express";
 
@@ -8,4 +9,11 @@ const postCategoryController = async(req: Request, res: Response): Promise<Respo
     return res.status(201).json(addedCategory);
 }
 
-export { postCategoryController }
+const getRealEstatesByCategoryController = async (req: Request, res: Response): Promise<Response> => {
+    const categoryId= Number(req.params.id);
+    const realEstates = await getRealEstatesByCategoryService(categoryId);
+
+    return res.status(200).json(realEstates);
+}
+
+export { postCategoryController, getRealEstatesByCategoryController }

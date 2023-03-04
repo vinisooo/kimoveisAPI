@@ -4,7 +4,7 @@ const addressSchema = z.object({
     id: z.number(),
     street: z.string().max(25),
     zipCode: z.string().max(8),
-    number: z.string().max(7).optional().nullable(),
+    number: z.string().max(6).optional().nullable(),
     city: z.string().max(20),
     state: z.string().max(2)
 })

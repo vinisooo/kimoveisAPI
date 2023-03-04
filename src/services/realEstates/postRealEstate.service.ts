@@ -13,7 +13,7 @@ export const postRealEstateService = async(payload: iRealEstatePostReq) => {
     const categoriesRepo: Repository<Category> = AppDataSource.getRepository(Category);
 
     const address: object = addressSchemaPostReq.parse(payload.address);
-    const {street, zipCode, number, city, state} = payload.address;
+    const {street, zipCode, city, state} = payload.address;
 
     const foundAddress = await addressesRepo.findOneBy({
         street: street,

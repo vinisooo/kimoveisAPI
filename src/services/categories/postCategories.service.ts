@@ -17,7 +17,7 @@ export const postCategoryService = async(payload: iCategoryReq): Promise<Categor
         throw new AppError("Category already exists", 409);
     }
 
-    const category = await categoryRepo.create(payload);
+    const category = categoryRepo.create(payload);
 
     await categoryRepo.save(category);
 

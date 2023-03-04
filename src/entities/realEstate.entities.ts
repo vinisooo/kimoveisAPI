@@ -1,7 +1,6 @@
 import { Category } from './categories.entities';
 import { Address } from './addresses.entities';
 import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinTable, ManyToOne } from "typeorm";
-import { nullable } from 'zod';
 
 @Entity("real_estate")
 export class RealEstate {
@@ -17,16 +16,16 @@ export class RealEstate {
     @Column({type: "integer"})
     size: number
 
-    @CreateDateColumn()
-    createdAt: Date
+    @CreateDateColumn({type: "date"})
+    createdAt: string
 
-    @UpdateDateColumn()
-    updatedAt: Date
+    @UpdateDateColumn({type: "date"})
+    updatedAt: string
 
     @OneToOne(() => Address)
     @JoinTable()
-    addressId: Address
+    address: Address
 
-    @ManyToOne(() => Category,{nullable: true})
-    categoryId: Category
+    @ManyToOne(() => Category, (category) => category.realEstate, {nullable: true})
+    category: Category | null
 }
