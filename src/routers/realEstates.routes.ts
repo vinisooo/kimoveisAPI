@@ -3,9 +3,9 @@ import { validateAdminMiddleware } from './../middlewares/validateAdmin.middlewa
 import { validateTokenMiddleware } from './../middlewares/validateToken.middleware';
 import { Router } from "express";
 import { getAllRealEstatesController, postRealEstateController } from "../controllers/realEstates";
-import { realEstateSchemaPostReq } from '../schemas/realEstates.schemas';
+import { realEstateSchemaBody } from '../schemas/realEstates.schemas';
 
 export const realEstatesRouter: Router = Router();
 
-realEstatesRouter.post("/", validateTokenMiddleware, validateAdminMiddleware, validatePayloadMiddleware(realEstateSchemaPostReq),postRealEstateController);
+realEstatesRouter.post("/", validateTokenMiddleware, validateAdminMiddleware, validatePayloadMiddleware(realEstateSchemaBody),postRealEstateController);
 realEstatesRouter.get("/", getAllRealEstatesController);

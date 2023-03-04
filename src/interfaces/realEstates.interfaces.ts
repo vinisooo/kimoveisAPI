@@ -1,8 +1,8 @@
 import { z } from "zod";
-import { addressSchemaPostReq, realEstateSchema, realEstateSchemaPostReq } from "../schemas/realEstates.schemas";
+import { addressSchemaPostReq, realEstateSchema, realEstateSchemaBody } from "../schemas/realEstates.schemas";
 
 type iRealEstate = z.infer<typeof realEstateSchema>;
-type iRealEstatePostReq = z.infer<typeof realEstateSchemaPostReq>;
 type iAddressPostReq = z.infer<typeof addressSchemaPostReq>
+type iRealEstateSchemaBody = z.infer<typeof realEstateSchemaBody>
 
-export { iRealEstate, iRealEstatePostReq, iAddressPostReq }
+export { iRealEstate, iAddressPostReq, iRealEstateSchemaBody }

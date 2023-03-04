@@ -7,15 +7,15 @@ export class Schedule{
     @PrimaryGeneratedColumn()
     id: number
 
-    @Column()
-    date: Date
+    @Column({type: "date"})
+    date: string
 
     @Column({type: "time"})
-    hour: Date
+    hour: string
 
     @ManyToOne(() => RealEstate)
-    realEstateId: RealEstate
+    realEstate: RealEstate
 
     @ManyToOne(() => User)
-    userId: User
+    user: User
 }

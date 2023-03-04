@@ -12,8 +12,8 @@ export class Address {
     @Column({type: "varchar", length: 8})
     zipCode: string
 
-    @Column({type: "varchar", length: 6, nullable: true})
-    number: string | null
+    @Column({type: "varchar", length: 8, nullable: true})
+    number?: string | null | undefined
 
     @Column({type: "varchar", length: 20})
     city: string

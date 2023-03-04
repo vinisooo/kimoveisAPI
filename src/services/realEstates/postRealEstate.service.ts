@@ -3,11 +3,11 @@ import { Address } from './../../entities/addresses.entities';
 import { AppDataSource } from './../../data-source';
 import { RealEstate } from './../../entities/realEstate.entities';
 import { Repository } from 'typeorm';
-import { iRealEstatePostReq } from '../../interfaces/realEstates.interfaces';
+import { iRealEstateSchemaBody } from '../../interfaces/realEstates.interfaces';
 import { AppError } from '../../errors';
 import { addressSchemaPostReq } from '../../schemas/realEstates.schemas';
 
-export const postRealEstateService = async(payload: iRealEstatePostReq) => {
+export const postRealEstateService = async(payload: iRealEstateSchemaBody): Promise<RealEstate> => {
     const addressesRepo: Repository<Address> = AppDataSource.getRepository(Address);
     const realEstateRepo: Repository<RealEstate> = AppDataSource.getRepository(RealEstate);
     const categoriesRepo: Repository<Category> = AppDataSource.getRepository(Category);
@@ -20,7 +20,7 @@ export const postRealEstateService = async(payload: iRealEstatePostReq) => {
         zipCode: zipCode,
         city: city,
         state: state,
-        number: !payload.address.number ? "" : payload.address.number
+        number: payload.address.number ? payload.address.number! : null!
     })
 
     if(foundAddress){
@@ -30,31 +30,30 @@ export const postRealEstateService = async(payload: iRealEstatePostReq) => {
     const addedAddress = addressesRepo.create(address);
     await addressesRepo.save(addedAddress);
 
-    let foundCategory = null;
-
-    if(payload.category){
-        foundCategory = await categoriesRepo.findOne({
-            where: {
-                id: payload.category
-            }
-        });
-    }
+    const foundCategory = await categoriesRepo.findOne({
+        where: {
+            id: payload.categoryId ? payload.categoryId : null!
+        }
+    });
 
     const joinedRealEstateReq = {
-        ...payload,
-        address: addedAddress.id
-    }
-
-    console.log(joinedRealEstateReq);
-    const addedRealEstate = realEstateRepo.create(joinedRealEstateReq as object);
-
-    await realEstateRepo.save(addedRealEstate);
-
-    let joinedRealEstate = {
-        ...addedRealEstate,
+        value: payload.value,
+        size: payload.size,
         address: addedAddress,
         category: foundCategory
     }
 
-    return joinedRealEstate
+    const addedRealEstate = realEstateRepo.create(joinedRealEstateReq);
+
+    await realEstateRepo.save(addedRealEstate);
+
+    // let joinedRealEstate = {
+    //     ...joinedRealEstateReq,
+    //     ...addedRealEstate,
+    //     category: {...foundCategory},
+    //     address: {...addedAddress}
+    // }
+    // console.log("==========JOINED REAL ESTATE====", joinedRealEstate)
+
+    return addedRealEstate
 }
