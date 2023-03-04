@@ -32,17 +32,15 @@ export const postRealEstateService = async(payload: iRealEstatePostReq) => {
 
     let foundCategory = null;
 
-    const realEstate: object = realEstateSchemaPostNoCategoryId.parse(payload);
-
-    if(payload.categoryId){
+    if(payload.category){
         foundCategory = await categoriesRepo.findOne({
             where: {
-                id: payload.categoryId
+                id: payload.category
             }
         });
     }
 
-    const addedRealEstate = realEstateRepo.create(realEstate as RealEstate);
+    const addedRealEstate = realEstateRepo.create(payload as RealEstate);
 
     await realEstateRepo.save(addedRealEstate);
 

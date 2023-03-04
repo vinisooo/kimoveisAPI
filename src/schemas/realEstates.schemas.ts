@@ -20,11 +20,11 @@ const realEstateSchema = z.object({
     updatedAt: z.string(),
     address: addressSchemaPostReq,
     addressId: z.number(),
-    categoryId: z.number().optional().nullable().default(null)
+    category: z.number().optional().nullable().default(null)
 })
 
 const realEstateSchemaReq = realEstateSchema.omit({id: true, createdAt: true, updatedAt: true});
 const realEstateSchemaPostReq = realEstateSchemaReq.omit({addressId: true });
-const realEstateSchemaPostNoCategoryId = realEstateSchemaPostReq.omit({categoryId: true});
+const realEstateSchemaPostNoCategoryId = realEstateSchemaPostReq.omit({category: true});
 
 export { realEstateSchema, realEstateSchemaPostReq, addressSchema, addressSchemaPostReq, realEstateSchemaPostNoCategoryId };

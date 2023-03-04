@@ -1,6 +1,5 @@
 import { Category } from './../../entities/categories.entities';
 import { AppDataSource } from './../../data-source';
-import { RealEstate } from './../../entities/realEstate.entities';
 import { Repository } from 'typeorm';
 import { AppError } from '../../errors';
 
