@@ -5,7 +5,7 @@ import { RealEstate } from './../../entities/realEstate.entities';
 import { Repository } from 'typeorm';
 import { iRealEstatePostReq } from '../../interfaces/realEstates.interfaces';
 import { AppError } from '../../errors';
-import { addressSchemaPostReq, realEstateSchemaPostNoCategoryId } from '../../schemas/realEstates.schemas';
+import { addressSchemaPostReq } from '../../schemas/realEstates.schemas';
 
 export const postRealEstateService = async(payload: iRealEstatePostReq) => {
     const addressesRepo: Repository<Address> = AppDataSource.getRepository(Address);
@@ -40,7 +40,13 @@ export const postRealEstateService = async(payload: iRealEstatePostReq) => {
         });
     }
 
-    const addedRealEstate = realEstateRepo.create(payload as RealEstate);
+    const joinedRealEstateReq = {
+        ...payload,
+        address: addedAddress.id
+    }
+
+    console.log(joinedRealEstateReq);
+    const addedRealEstate = realEstateRepo.create(joinedRealEstateReq as object);
 
     await realEstateRepo.save(addedRealEstate);
 

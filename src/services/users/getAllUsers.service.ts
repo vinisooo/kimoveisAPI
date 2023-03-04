@@ -1,5 +1,5 @@
-import { AppDataSource } from './../../data-source';
-import { User } from './../../entities/users.entities';
+import { AppDataSource } from '../../data-source';
+import { User } from '../../entities/users.entities';
 import { Repository } from 'typeorm';
 import { noPasswordUserSchema } from '../../schemas/users.schemas';
 import { iNoPasswordUser } from '../../interfaces/users.interfaces';

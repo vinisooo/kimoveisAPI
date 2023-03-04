@@ -1,7 +1,7 @@
-import { patchUserService } from './../services/users/patchUser.service';
-import { getAllUsersService } from './../services/users/getAllUsers.service';
+import { patchUserService } from '../services/users/patchUser.service';
+import { getAllUsersService } from '../services/users/getAllUsers.service';
 import { User } from './../entities/users.entities';
-import { postUserService } from './../services/users/postUser.service';
+import { postUserService } from '../services/users/postUser.service';
 import { Request, Response } from "express"
 import { iNoPasswordUser, iPostUserReq } from '../interfaces/users.interfaces';
 import { softDeleteUserService } from '../services/users/softDeleteUser.service';

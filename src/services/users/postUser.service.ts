@@ -1,5 +1,5 @@
-import { User } from './../../entities/users.entities';
-import { AppDataSource } from './../../data-source';
+import { User } from '../../entities/users.entities';
+import { AppDataSource } from '../../data-source';
 import { Repository } from 'typeorm';
 import { iNoPasswordUser, iPostUserReq } from "../../interfaces/users.interfaces";
 import { noPasswordUserSchema } from '../../schemas/users.schemas';

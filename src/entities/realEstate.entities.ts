@@ -1,6 +1,6 @@
 import { Category } from './categories.entities';
 import { Address } from './addresses.entities';
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinTable, ManyToOne } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, OneToOne, JoinTable, ManyToOne, JoinColumn } from "typeorm";
 
 @Entity("real_estate")
 export class RealEstate {
@@ -23,7 +23,7 @@ export class RealEstate {
     updatedAt: string
 
     @OneToOne(() => Address)
-    @JoinTable()
+    @JoinColumn({name: "addressId"})
     address: Address
 
     @ManyToOne(() => Category, (category) => category.realEstate, {nullable: true})

@@ -1,3 +1,4 @@
+import { getAllRealEstatesService } from './../services/realEstates/getAllRealEstates.service';
 import { Request, Response } from "express";
 import { postRealEstateService } from "../services/realEstates/postRealEstate.service";
 
@@ -8,4 +9,9 @@ const postRealEstateController = async(req: Request, res: Response): Promise<Res
     return res.status(201).json(createdRealEstate);
 }
 
-export { postRealEstateController }
+const getAllRealEstatesController = async (req: Request, res: Response): Promise<Response> => {
+    const allRealEstates = await getAllRealEstatesService();
+    return res.status(200).json(allRealEstates);
+}
+
+export { postRealEstateController, getAllRealEstatesController }

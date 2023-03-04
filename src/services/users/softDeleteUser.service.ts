@@ -1,6 +1,6 @@
-import { AppDataSource } from './../../data-source';
+import { AppDataSource } from '../../data-source';
 import { Repository } from 'typeorm';
-import { User } from './../../entities/users.entities';
+import { User } from '../../entities/users.entities';
 
 export const softDeleteUserService = async(userId: number, foundUser?: User) => {
     const userRepo: Repository<User> = AppDataSource.getRepository(User);
