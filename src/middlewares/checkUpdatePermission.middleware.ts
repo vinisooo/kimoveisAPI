@@ -8,8 +8,6 @@ export const checkUpdatePermissionMiddleware = (req: Request, res: Response, nex
     const userFoundById = req.foundUser;
     const loggedUser: iLoggedUser = req.loggedUser;
 
-    console.log(userFoundById, loggedUser);
-
     if(!loggedUser.admin){
         if(userFoundById.id != loggedUser.id){
             throw new AppError("Insufficient permission", 403);
