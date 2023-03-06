@@ -47,13 +47,5 @@ export const postRealEstateService = async(payload: iRealEstateSchemaBody): Prom
 
     await realEstateRepo.save(addedRealEstate);
 
-    // let joinedRealEstate = {
-    //     ...joinedRealEstateReq,
-    //     ...addedRealEstate,
-    //     category: {...foundCategory},
-    //     address: {...addedAddress}
-    // }
-    // console.log("==========JOINED REAL ESTATE====", joinedRealEstate)
-
     return addedRealEstate
 }

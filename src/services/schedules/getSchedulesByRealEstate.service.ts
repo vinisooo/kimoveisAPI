@@ -6,7 +6,7 @@ import { AppError } from '../../errors';
 export const getSchedulesByRealEstateService = async(realEstateId: number) => {
     const realEstatesRepo: Repository<RealEstate> = AppDataSource.getRepository(RealEstate);
 
-    const allRealEstatesRepo = await realEstatesRepo.findOne({
+    const schedulesFromRealEstate = await realEstatesRepo.findOne({
         relations:{
             address: true,
             category: true,
@@ -19,9 +19,9 @@ export const getSchedulesByRealEstateService = async(realEstateId: number) => {
         }
     });
 
-    if(!allRealEstatesRepo){
+    if(!schedulesFromRealEstate){
         throw new AppError("RealEstate not found", 404);
     }
 
-    return allRealEstatesRepo;
+    return schedulesFromRealEstate;
 }

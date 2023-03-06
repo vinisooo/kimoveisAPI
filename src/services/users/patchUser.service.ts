@@ -16,6 +16,5 @@ export const patchUserService = async (foundUser: User, payload: object) => {
 
     const noPasswordEditedUser: iNoPasswordUser = noPasswordUserSchema.parse(editedUser);
 
-    console.log(noPasswordEditedUser);
     return noPasswordEditedUser;
 }

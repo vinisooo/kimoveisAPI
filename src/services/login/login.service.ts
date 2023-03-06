@@ -13,11 +13,9 @@ export const loginService = async(payload: iLoginReqSchema): Promise<string> => 
         email: payload.email
     });
 
-    console.log(foundUserById);
     if(!foundUserById){
         throw new AppError("Invalid credentials", 401);
     }
-    console.log(foundUserById);
 
     const rightPassword: boolean = await compare(payload.password, foundUserById.password);
 
