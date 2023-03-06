@@ -3,6 +3,7 @@ import { loginRouter } from './routers/login.routes';
 import { userRouter } from "./routers/users.routes";
 import { realEstatesRouter } from "./routers/realEstates.routes";
 import { categoriesRouter } from "./routers/categories.routes";
+import { schedulesRouter } from "./routers/schedules.routes";
 import express, { Application } from "express";
 import { handleError } from "./errors";
 
@@ -13,6 +14,7 @@ app.use("/users", userRouter);
 app.use("/login", loginRouter);
 app.use("/categories", categoriesRouter);
 app.use("/realEstate", realEstatesRouter)
+app.use("/schedules", schedulesRouter)
 
 app.use(handleError);
 

@@ -1,6 +1,6 @@
-import { getAllCategoriesService } from './../services/categories/getAllCategories.service';
-import { getRealEstatesByCategoryService } from './../services/categories/getRealEstatesByCategory.service';
-import { postCategoryService } from './../services/categories/postCategories.service';
+import { getAllCategoriesService } from '../services/categories/getAllCategories.service';
+import { getRealEstatesByCategoryService } from '../services/categories/getRealEstatesByCategory.service';
+import { postCategoryService } from '../services/categories/postCategories.service';
 import { Request, Response } from "express";
 
 const postCategoryController = async(req: Request, res: Response): Promise<Response> => {

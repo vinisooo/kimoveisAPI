@@ -1,4 +1,4 @@
-import { getAllRealEstatesService } from './../services/realEstates/getAllRealEstates.service';
+import { getAllRealEstatesService } from '../services/realEstates/getAllRealEstates.service';
 import { Request, Response } from "express";
 import { postRealEstateService } from "../services/realEstates/postRealEstate.service";
 

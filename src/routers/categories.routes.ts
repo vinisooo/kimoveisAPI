@@ -2,7 +2,7 @@ import { validateTokenMiddleware } from './../middlewares/validateToken.middlewa
 import { validatePayloadMiddleware } from './../middlewares/validateUserPayload.middleware';
 import { Router } from "express";
 import { categoryReqSchema } from '../schemas/categories.schemas';
-import { getAllCategoriesController, getRealEstatesByCategoryController, postCategoryController } from '../controllers/categories';
+import { getAllCategoriesController, getRealEstatesByCategoryController, postCategoryController } from '../controllers/categories.controllers';
 import { validateAdminMiddleware } from '../middlewares/validateAdmin.middleware';
 
 export const categoriesRouter: Router = Router();
